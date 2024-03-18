@@ -5,7 +5,6 @@ let userSchema = mongoose.Schema({
   email: {
     type: String,
     required: true,
-    unique: true,
   },
   password: {
     type: String,
@@ -13,6 +12,10 @@ let userSchema = mongoose.Schema({
   sub:{
     type:String,
   },
+  verified: {
+    type: Boolean,
+    default: false,
+  }
 });
 
 userSchema.methods.matchPassword = async function (enteredPassword) {

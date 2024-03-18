@@ -6,5 +6,6 @@ router.post('/login',Authentication.login)
 router.post('/signup',Authentication.registerUser)
 router.post('/GoogleSignup',Authentication.googleAuth)
 router.post('/GoogleLogin',Authentication.googleLogin)
+router.get('/verifyEmail',Authentication.verifyEmail)
 
 export default router
