@@ -21,7 +21,7 @@ const SendVerifyMail = (email) => {
     html:
       "<p>hi " +
       email +
-      ',please click here to <a href="http://localhost:5173/?email=' +
+      ',please click here to <a href="https://poseben-assigment.netlify.app/?email=' +
       email +
       '">verify</a> your mail</p>  ',
   };
