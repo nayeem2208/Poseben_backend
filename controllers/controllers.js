@@ -2,6 +2,7 @@ import usermodel from "../models/model.js";
 import generateToken from "../utils/jwt.js";
 import jwt from "jsonwebtoken";
 import SendVerifyMail from "../utils/nodemailer.js";
+import axios from 'axios'
 
 const Authentication = {
   login: async (req, res) => {
@@ -127,6 +128,18 @@ const Authentication = {
       res.status(400).json({ error });
     }
   },
+  emailValidation:async(req,res)=>{
+    try {
+      console.log(req.query,process.env.API_KEY,'query')
+
+      let data =await axios.get(`https://gamalogic.com/emailvrf/?emailid=${req.query.email}&apikey=${process.env.API_KEY}&speed_rank=0`)
+      console.log(data.data.gamalogic_emailid_vrfy[0],'data')
+      res.status(200).json(data.data.gamalogic_emailid_vrfy[0])
+    } catch (error) {
+      console.log(error)
+      res.status(400).json(error)
+    }
+  }
 };
 
 export default Authentication;
